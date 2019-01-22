@@ -1,0 +1,521 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{amsmath}
+
+\title{Graphics Tutorial 1 notesh}
+\author{Zubair Abid, 20171076}
+
+\begin{document}
+\maketitle
+
+
+
+
+
+	\[
+	\textrm{Rotation Matrix} = 
+		\begin{bmatrix}
+			cos \theta & - sin \theta \\
+			sin \theta & cos \theta
+		\end{bmatrix}			
+	\]
+	
+	\[
+	\textrm{Scaling matrix} = 
+		\begin{bmatrix}
+			S_1 & 0 & 0 \\
+			0 & S_2 & 0 \\
+			0 & 0 & 1		
+		\end{bmatrix}			
+	\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{enumerate}
+
+	% Problem 1
+	\item 
+	$X$ is a random variable with $PDF$ given by
+	
+	\[ f(n) = 
+		\begin{cases}
+			cx^2 & \quad \text{if } x \leq 1 \\
+			0 & \quad \text{otherwise}
+		\end{cases}
+	\]
+
+	\begin{enumerate}
+		\item Constant $c$
+		\\ \\
+		Summation of PDF over domain adds up to 1.\\
+		Or, 
+		\[
+		\int\limits_{-\infty}^{\infty} \mathrm{cx^2}
+		\, \mathrm{d}x = 1
+		\]
+		Since the function returns $0$ everywhere except
+		 at $[-1, 1]$, 	we just calculate
+		\begin{align*}
+			\int\limits_{-1}^{1} \mathrm{cx^2}\, 
+			\mathrm{d}x &= 1\\
+			c\times \left.\frac{x^3}{3}\right|_{-1}^{1} &= 1\\
+			c\times \frac{2}{3} &= 1\\
+			c &= 1.5 \text{ (Answer)}
+		\end{align*}				
+		
+		\item $E\left[X\right]$ and $Var\left(X\right)$
+		$E[X]$ is 
+		\begin{align*}
+			\int\limits_{-1}^{1} \mathrm{xcx^2}\,\mathrm{d}x
+			&= 1.5 \times \int\limits_{-1}^{1} 
+			\mathrm{x^3}\,\mathrm{d}x\\
+			&= 1.5 t\times \left.\frac{x^4}{4}\right|_{-1}^{1}\\
+			&= 0
+		\end{align*}
+			
+		Now, $Var(X) = E[x^2] - (E[X])^2$, or\\
+		\begin{align*}
+			Var(X) &= 1.5\times \int\limits_{-1}^{1} 
+			\mathrm{x^4}\,\mathrm{d}x - 0\\
+			&= 1.5\times \left.\frac{x^5}{5}\right|_{-1}^{1} \\
+			&= 1.5 \times 0.4\\
+			&= 0.6
+		\end{align*}
+		
+		
+		\item $P\left(X \geq \frac{1}{2} \right)$
+		\\ \\ 
+		Since the function given is a PDF, to get the
+		$P(X \geq \frac{1}{2})$, all we need to do is
+		integrate $f(x)$ from $\frac{1}{2}$ to $1$\\
+		Or, 
+		\begin{align*}
+			P\left(X \geq \frac{1}{2} \right) &=
+			\int\limits_{\frac{1}{2}}^{1} 
+			\mathrm{cx^2}\,\mathrm{d}x\\
+			&= 1.5 \times \left.\frac{x^3}{3}
+			\right|_{\frac{1}{2}}^{1}\\
+			&= 1.5 \times \frac{7}{24}\\
+			&= 0.4375
+		\end{align*}
+	\end{enumerate}
+
+	% Problem 2
+	\item Given, the CDF is:
+	\[
+		F(x) = \frac{x^3 + k}{40} \quad x = 1, 2, 3
+	\]
+	\begin{enumerate}
+		\item Value of k\\
+		Since $F(x)$ is a CDF, value of $F(3) = 1$\\
+		or 
+		\begin{align*}
+			\frac{27+k}{40} = 1\\
+			k = 13 \quad\text{(Q.E.D)}
+		\end{align*}
+
+		\item Find the probability distribution of X\\
+		This can be obtained by simple subtraction,
+		answer is
+		\begin{align*}
+			P(X=1) &= \frac{1+13}{40}\\
+			&= \frac{7}{20}\\
+			P(X=2) &= \frac{21-14}{40}\\
+			&= \frac{7}{40}\\
+			P(X=3) &= \frac{40-21}{40}\\
+			&= \frac{19}{40}
+		\end{align*}
+		
+		\item Given $Var(X) = \frac{259}{320}$,
+		 calculate $Var(4X-5)$		
+		 \\
+		 \\
+		 \begin{align*}
+		 	{\sigma_{ax+b}}^2 &= a^2 \times {\sigma_x}^2\\
+		 	{\sigma_{4x+5}}^2 &= 16 \times {\frac{259}{320}}\\
+		 	&= \frac{259}{20}\\
+		 	&= 12.95
+		 \end{align*}
+	\end{enumerate}
+	
+	% Problem 3
+	\item 
+	\begin{align*}
+		P \left(\text{First 6 in 2nd throw }\right| 
+		\left.\text{First 6 on even throw}\right)
+		&= \frac{P\left(\text{2nd throw}\right)\cap
+		P\left(\text{even throw}\right)}{P\left(
+		\text{even throw}\right)}\\
+		&= \frac{\frac{5}{6}\times\frac{1}{6}}
+		{\frac{1}{6}\times\left[\sum \frac{5}{6}
+		+ \left(\frac{5}{6}\right)^3 + \cdots\right]}\\
+		&= \frac{\frac{5}{36}}{\frac{1}{6}\times
+		\frac{30}{11}}\\
+		&= \frac{\frac{5}{6}}{\frac{30}{11}}\\
+		&= \frac{5}{6} \times \frac{11}{30}\\
+		&= \frac{11}{36} \left(\text{Answer}\right)
+	\end{align*}
+	
+	% Number 4
+	\item By Bayes' Theorerm,\\
+	\begin{align*}
+		P( 0\text{ sent}|0 \text{ received})
+		&= \frac{P(0\text{ received}|0 \text{ sent}
+		)\times P(0\text{ sent}) }
+		{P(0\text{ received})}\\		
+		&= \frac{\frac{4}{5}\times\frac{2}{3}}
+		{P(0\text{ received}|0\text{ sent})\times
+		P(0\text{ sent}) + P(0\text{ received}|
+		1\text{ sent})\times P(1\text{ sent})}\\
+		&= \frac{\frac{8}{15}}{\frac{8}{15}\times
+		\frac{1}{18}}\\
+		&= \frac{\frac{8}{15}}{\frac{53}{90}}\\
+		&= \frac{48}{53} \quad\text{(Ans)}
+	\end{align*}
+	
+	% Number 5
+	\item 
+	
+	\begin{enumerate}
+		\item
+		Sum of a PDF over its given range is 1\\
+		Given function:
+		\[ f(n) = 
+			\begin{cases}
+				cx^2 & \quad \text{if } 0 < x < 3 \\
+				0 & \quad \text{otherwise}
+			\end{cases}
+		\]
+	
+		\begin{align*}
+			\int_{0}^{3} \mathrm{cx^2}\,\mathrm{d}x &= 1\\
+			c\times\left.\frac{x^3}{3}\right|_{0}^{3} &= 1\\
+			c\times 9 &= 1\\
+			c &= \frac{1}{9}
+		\end{align*}
+	
+		\item $P(1<X<2)$
+		\begin{align*}
+			P(1<X<2) &= \frac{1}{9} \times 
+			\int_{1}^{2} \mathrm{x^2}\,\mathrm{d}x\\
+			&= \frac{1}{9} \times \left.\frac{x^3}{3}
+			\right|_{1}^{2}\\
+			&= \frac{1}{9} \times \left[ \frac{8}{3}
+			- \frac{1}{3}\right]\\
+			&= \frac{7}{27}
+		\end{align*}
+	\end{enumerate}		
+	
+	% Problem 6
+	\item 
+		\begin{enumerate}
+		\item
+			\begin{align*}
+			c\times\int_{-\infty}^{\infty} \mathrm{
+			\frac{1}{x^2+1}}\,\mathrm{d}x &= 1\\
+			c\times\left.tan^{-1} (x)\right|_{-\infty}^
+			{\infty} &= 1\\
+			c \times \Pi &= 1\\
+			c &= \frac{1}{\Pi}
+			\end{align*}
+		\item 
+			\begin{align*}
+			x \in \left(-1, -\sqrt{\frac{1}{3}}\right)
+			\cup \left(\sqrt{\frac{1}{3}}, 1\right)\\
+			P\left(\frac{1}{3}<x^2<1\right) &= \frac{1}{\Pi}
+			\times\left[\int_{-1}^{-\sqrt{\frac{1}{3}}} 
+			\mathrm{\frac{1}{1+x^2}}\,\mathrm{d}x + 
+			\int_{\sqrt{\frac{1}{3}}}^{1} 
+			\mathrm{\frac{1}{1+x^2}}\,\mathrm{d}x\right]\\
+			&= \frac{1}{\Pi} \times \left[
+			\left.tan^{-1} (x)\right|_{-1}^{-\sqrt{\frac{1}{3}}}
+			+ \left.tan^{-1} (x)\right|_{\sqrt{\frac{1}{3}}}^{1}
+			\right]\\
+			&= \frac{1}{\Pi} \times \left[ -\frac{\Pi}{6}
+			+ \frac{\Pi}{4} + \frac{\Pi}{4} - \frac{\Pi}{6} 
+			\right]\\
+			&= \frac{1}{\Pi} \times \frac{\Pi}{6}\\
+			&= \frac{1}{6}
+			\end{align*}
+		\end{enumerate}
+
+	% Problem 7
+	\item 
+	\begin{enumerate}
+		\item For values of $x > 0$
+		\begin{align*}
+			\int_{0}^{x} \mathrm{f(x)}\,\mathrm{d}x &=
+			F(x),\quad F(x) = 1 - e^{-2x}\\
+			f(x) &= \frac{dF(x)}{dx}\\
+			f(x) &= 2e^{-2x}
+		\end{align*}
+			
+		for values of $x < 0$, $f(x) = 0$\\
+		Answer:
+		\[
+			\text{PDF }f(x) = 
+			\begin{cases}
+				2e^{-2x} \quad \text{if x} > 0\\
+				0 \quad \text{otherwise}
+			\end{cases}
+		\]
+			
+		\item For $P(X>2)$, we do $F(\infty)-F(2)$
+		\begin{align*}
+			F(\infty) - F(2) &= 1 - \left(1-e^{-4}\right)\\
+			&= e^{-4} \quad\text{(Ans)}
+		\end{align*}
+			
+		\item $P(-3<X\leq4) = P(X\leq4)$
+		\begin{align*}
+		&= F(4)\\
+		&= 1 - e^{-8} \quad\text{(Ans)}
+		\end{align*}
+		
+	\end{enumerate}
+
+	% Problem 8
+	\item 
+		\begin{enumerate}
+			\item 
+			\begin{align*}
+				F1(-\infty) = 0\\
+				F1(\infty) = 1\\
+				\frac{d}{dx} F1(x) \geq 0 \forall x \subset domain\\
+				\Rightarrow \textrm{the function is a CDF}
+			\end{align*}
+			\item 
+			\begin{align*}
+				F1(-\infty) \neq 0\\
+				F1(\infty) = 1\\
+				\Rightarrow \textrm{the function is not a CDF}
+			\end{align*}
+		\end{enumerate}
+
+	% Problem 9
+	\item B = black, O = orange, W = white
+	\\
+	\textbf{Assumption}: the balls are picked out one by 
+	one, so the following combinations are all possible and distinct\\
+	possible outcomes = BB(+4), WW(-2), OO(0), BW(1), WB(1), BO(2), 
+	OB(2), WO(-1), OW(-1)\\
+	\\
+	Outcome is +4: 
+	\begin{align*}
+		\textrm{BB} &= \frac{4}{14} \times \frac{3}{13}\\
+		&= \frac{6}{91}
+	\end{align*}
+	\\
+	Outcome is -2: 
+	\begin{align*}
+		\textrm{WW} &= \frac{8}{14} \times \frac{7}{13}\\
+		&= \frac{28}{91}
+	\end{align*}
+	\\
+	Outcome is 0: 
+	\begin{align*}
+		\textrm{OO} &= \frac{2}{14} \times \frac{1}{13}\\
+		&= \frac{1}{91}
+	\end{align*}
+	\\
+	Outcome is +1: 
+	\begin{align*}
+		\textrm{BW and WB} &= 2\times\frac{4}{14} \times \frac{8}{13}\\
+		&= \frac{16}{91}\\
+		&= \frac{32}{91}\\
+	\end{align*}
+	\\
+	Outcome is +2: 
+	\begin{align*}
+		\textrm{BO and OB} &= 2\times\frac{4}{14} \times \frac{2}{13}\\
+		&= \frac{4}{91}\\
+		&= \frac{8}{91}\\
+	\end{align*}
+	\\
+	Outcome is -1: 
+	\begin{align*}
+		\textrm{WO and OW} &= 2\times\frac{8}{14} \times \frac{2}{13}\\
+		&= \frac{8}{91}\\
+		&= \frac{16}{91}\\
+	\end{align*}
+	
+	% Problem 10
+	\item 
+	\begin{align*}
+		P(X=0) &= \frac{\binom{5}{2}\times 3!}{5!}\\
+		&= \frac{1}{2}\\
+		\textrm{similarly, }\\
+		P(X=1) &= \frac{\binom{5}{3}\times 2!}{5!}\\
+		&= \frac{1}{6}\\
+		P(X=2) &= \frac{\binom{5}{4}\times 2! \times 1!}{5!}\\
+		&= \frac{1}{12}\\
+		P(X=3) &= \frac{\binom{5}{5}\times 3!}{5!}\\
+		&= \frac{1}{20}\\
+		P(X=4) &= \frac{4!}{5!}\\
+		&= \frac{1}{5}\\
+	\end{align*}
+	
+	% Problem 11
+	\item Assume X is the number of defective items
+	in the sample\\
+	or, possible values of $X = 0, 1, 2, 3$\\
+	
+	\begin{align*}
+		E(X) &= \sum xf(x)\\
+		&= f(1) + 2\times f(2) + 3 \times f(3)\\
+		&= \frac{4\times16\times15}{20\times19\times18}
+		+ 2\times\frac{4\times3\times16}{20\times19\times18}
+		+ 3\times\frac{4\times3\times2}{20\times19\times18}\\
+		&= \frac{1416}{6840}\\
+		&= 0.207 \quad\text{(Ans)}
+	\end{align*}
+	
+	% Problem 12
+	\item For errors, at least three bits should be flipped\\
+	Therefore, probability \\
+	\begin{align*}
+	&= flip(3) + flip(4) + flip(5)\\
+	&= \binom{5}{3}\times 0.8^2 \times 0.2^3 +
+	\binom{5}{4} \times 0.8 \times0.2^4 +
+	\binom{5}{5} \times 0.2^5\\
+	&= 0.0512 + 0.0064 + 0.00032\\
+	&= 0.05792 \quad \text{ (Ans)}
+	\end{align*}
+	
+	% Problem 13
+	\item 
+	\begin{align*}
+		P(X=1) &= \frac{\binom{5}{1}\times9!}{10!}\\
+		&= \frac{1}{2}\\ \\
+		P(X=2) &= \frac{\binom{5}{1}\times\binom{5}{1}\times8!}{10!}\\
+		&= \frac{5}{18}\\ \\
+		P(X=3) &= \frac{(2!\times\binom{5}{2})\times\binom{5}{1}\times7!}{10!}\\
+		&= \frac{5}{36}\\ \\
+		P(X=4) &= \frac{(3!\times\binom{5}{3})\times\binom{5}{1}\times6!}{10!}\\
+		&= \frac{5}{84}\\ \\
+	\end{align*}
+	\begin{align*}
+		P(X=5) &= \frac{(4!\times\binom{5}{4})\times\binom{5}{1}\times5!}{10!}\\
+		&= \frac{5}{252}\\ \\
+		P(X=6) &= \frac{(5!\times\binom{5}{5})\times\binom{5}{1}\times4!}{10!}\\
+		&= \frac{1}{252}\\ \\
+		P(X >= 7) &= 0
+	\end{align*}
+	
+	% Problem 14
+	\item 
+	\begin{align*}
+		\frac{\textrm{Number of ways to have 3 men in each team}}
+		{\textrm{All possible combinations}}\\
+		&= \frac{\binom{6}{3}\times\binom{6}{3}}
+		{\binom{12}{6}}\\
+		&= \frac{400}{924}\\
+		&= 0.4329
+	\end{align*}
+	
+	% Problem 15
+	\item 
+	E = probability that Elvis' twin was male\\
+	A = probability that Elvis' twin was identical
+	 = $\frac{2}{19}$\\
+	B = probability that Elvis' twin was fraternal
+	= $1-\frac{2}{19} = \frac{17}{19}$\\
+	\\
+	Now,
+	\begin{align*}
+		P(M|A) = 1\\
+		P(M|B) = 0.5\\
+		\\
+		P(A|M) &= \frac{P(M|A)\times P(A)}
+		{P(M|A)\times P(A) + P(B) \times P(M|B)}\\
+		&= \frac{1 \times \frac{2}{19}}
+		{1\times \frac{2}{19} + \frac{1}{2} \times
+		\frac{17}{19}}\\
+		&= \frac{4}{21}\quad\textrm{(Ans)}
+	\end{align*}
+	
+	% Problem 16
+	\item 
+		\[
+			f_{xy}(x,y) = 
+			\begin{cases}
+				2 \quad \text{if } x+y \leq 1, x,y > 0 
+				\quad \Rightarrow 0 < x,y < 1\\
+				0 \quad \text{otherwise}
+			\end{cases}
+		\]	
+
+		\begin{align*}
+			\sigma_{x,y} = E(x,y) - \mu_x \mu_y\\
+			E(x,y) &= \int_0^1 \int_0^y xyf(x,y) dydx\\
+			&= 2\int_0^1 x\left[\frac{y^2}{2}\right] dx\\
+			&= \int_0^1 x(x^2 -2x +1) dx\\
+			&= \int_0^1 (x^3 -2x^2 +x) dx\\
+			&= \left.\frac{x^4}{4} -\frac{2x^3}{3} +\frac{x^2}{2} \right|_0^1\\
+			&= \frac{1}{4} - \frac{2}{3} +\frac{1}{2}\\
+			&= \frac{1}{12}\\
+		\end{align*}
+		\begin{align*}
+			\\
+			\mu_x = \int_x \textrm{xg(x)} \textrm{dx}\\
+			&= \int_x x \int_y \textrm{f(x,y) dy dx}\\
+			&= \int_0^1 x \int_0^{1-x} \textrm{2 dy dx}\\
+			&= 2\times\int_0^1 \textrm{x(1-x)dx}\\
+			&= 2\times \left. \frac{x^2}{2} -\frac{x^3}{3}
+			\right|_0^1\\ 
+			&= 2\times\frac{1}{6}\\
+			&= \frac{1}{3}\\
+		\end{align*}
+		\begin{align*}
+			\\
+			\mu_y = \int_y \textrm{yh(y)dy}\\
+			&= \int_y y \int_x \textrm{f(x,y) dx dy}\\
+			&= \int_0^1 y \int_0^{1-y} \textrm{2 dx dy}\\
+			&= 2\times\int_0^1 \textrm{y(1-y) dy}\\
+			&= 2\times\frac{1}{6}\\
+			&= \frac{1}{3}\\
+			\\
+		\end{align*}
+		\begin{align*}
+			\\
+			\sigma_{xy} &= E(x,y)-\mu_x\mu_y\\
+			&= \frac{1}{12} - \frac{1}{3}\times\frac{1}{3}\\
+			&= \frac{1}{12} - \frac{1}{9}\\
+			&= \frac{-3}{108}\\
+			&= \frac{-1}{36} \quad\textrm{(Ans)}
+		\end{align*}				
+		
+	% Problem 17
+	\item X = Probability of getting head and getting 
+	tail in a coin is equal, = $\frac{1}{2}$\\
+	
+	Assumption of ideal conditions:\\
+	\quad Coin toss is unaffected by surrounding conditions
+	and is perfectly unbiased.\\
+	Ans: P(X) = 1 \\
+	\\
+	Assumption of non ideal conditions:\\
+	\quad Coin toss is affected by surrounding conditions
+	and there is bias. So probabilities are not equal\\
+	Ans: P(X) = 0 \\
+		
+\end{enumerate}
+
+\end{document}
