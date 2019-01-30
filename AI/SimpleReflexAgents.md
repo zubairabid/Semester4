@@ -18,4 +18,14 @@
 
  - New state is a best guess
 
- 
+# Goal based agents
+ - Search and plannign
+
+# Utility Based Agents
+
+ - Measuring value of goal
+
+ - Utility: numerical measurement of importance of a goal
+
+
+# Learning agent
