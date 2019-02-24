@@ -1,0 +1,76 @@
+Some bullcrap on non Indian languages
+
+1. Q/A system (prototype)
+2. Dialogue System
+3. Summarisation
+4. Natural Language Generation
+5. Coreference Chain
+6. Anaphora resolution
+7. Lexical Resource
+8. Sentiment Analysis
+9. Sarcasm detection
+
+
+
+Things to consider
+1. Q/A
+	Non direct question
+	Storage of data
+	Understanding
+
+2. Dialogue
+	Reference?
+	System directed? (single initiated)
+	User directed? (like QA system)
+
+Domains for both:
+	Weather
+	Sports
+	Tourism/Hospital/Trains
+	Short stories
+
+Some general thing I've missed, she's discussing with the non CLD bengali
+
+Shelly says she's going domain by domain
+
+Also structured vs unstructured database
+
+Questions outside domain should be discarded
+
+3. Summarisation
+	Non English (WHYYYYYYYY)
+	Topics:
+		Stories
+	Multi or single documents
+
+4. Natural Language Generation
+	Headline generation
+	Story generation
+
+5. Coreference Chain
+6. Anaphora resolution
+	Probably rule based
+
+7. Lexical Resource
+	Wordnet - Sentilexicons
+	Knowledge graphs
+	Ontologies
+
+8. Sentiment Analysis
+	Classifiers
+	Use:
+		words
+		features
+		aspects
+		document
+
+9. Sarcasm detection
+
+10. Any other
+
+
+
+
+
+Presenting research paper
+	Present 3 papers in a compiled way
