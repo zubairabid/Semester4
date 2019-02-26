@@ -49,11 +49,8 @@ int main(int argc, char const *argv[])
     int addrlen = sizeof(address);
     char buffer[1024] = {0};
 
-    char *hello = "~[server] : Connection established";
     char *lsfiles_msg = "~[server] : Received request to view files";
-    char *lsfiles_ret = "~[server] : Files in directory";
     char *sendfile_msg = "~[server] : Received request to send file";
-    char *sendfile_ret = "~[server] : Sending file";
     char *inv = "invalid";
 
     FILE* filepointer;

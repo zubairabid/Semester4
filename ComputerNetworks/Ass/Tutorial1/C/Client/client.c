@@ -41,8 +41,6 @@ int main(int argc, char const *argv[])
     serv_addr.sin_port = htons(PORT);
 
 
-    char *hello = "~[client] : Establishing connection";
-    char *requestlist = "listall";
     char input[1024];    
     
     
@@ -67,13 +65,16 @@ int main(int argc, char const *argv[])
                     fprintf(filepointer, "%s", buffer);                    
                 }
                 fclose(filepointer);
-                printf("Have to  write file here\n");
+                printf("File received\n");
             }
             else {
-                printf("file no existo\n");
+                printf("The file does not exist\n");
             }
         }
-        printf("Received from server - \n%s\n", buffer);
+        else {
+            printf("Received from server - \n%s\n", buffer);
+        }
+
     }
 
     return 0;
