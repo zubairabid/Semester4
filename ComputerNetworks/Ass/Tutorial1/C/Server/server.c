@@ -114,7 +114,7 @@ int main(int argc, char const *argv[])
                                                             sizeof(address));
         }
         else { // Assume filename
-            char *filname = "./server";
+            char *filname = "./food.txt";
             // strcat("server");
             printf("trying to open file %s\n", filname);
             if ((filepointer = fopen(filname, "r")) == NULL) {
@@ -128,7 +128,20 @@ int main(int argc, char const *argv[])
                 // while (valread = fread())
                 // sendfile(filepointer, buffer);
 
-                fscanf(filepointer, "%s", buffer);
+                // while (filepointer != NULL) {
+
+                // fscanf(filepointer, "%s", buffer);
+                // } 
+
+                char c;
+                int i = 0;
+                while (1) {
+                    c = fgetc(filepointer);
+                    // strcat(buffer, c);
+                    buffer[i++] = c;
+                    if (c == EOF)
+                        break;
+                }
 
                 printf("GOT SOME %s\n", buffer);
                 sendto(server_fd, buffer, strlen(buffer), 0, (struct sockaddr*)&address,
