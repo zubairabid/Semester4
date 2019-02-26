@@ -63,8 +63,10 @@ int main(int argc, char const *argv[])
             if (!compstr(buffer, "invalid", 7)) {
                 FILE *filepointer;
                 if (filepointer = fopen(input, "w")) {
-                    fwrite(buffer, 1024, 1, filepointer);
+                    
+                    fprintf(filepointer, "%s", buffer);                    
                 }
+                fclose(filepointer);
                 printf("Have to  write file here\n");
             }
             else {

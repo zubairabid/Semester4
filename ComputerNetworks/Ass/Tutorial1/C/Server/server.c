@@ -37,14 +37,11 @@ int compstr(char *one, char *two, int len) {
     return 1;
 }
 
-int sendfile(FILE* filepointer, char *buffer) {
-    for (int i = 0; i <  1024; i++) {
-        buffer[i] = fgetc(filepointer);
-        if (buffer[i] == EOF)
-            return 1;
-    }
-    return 0;
-}
+// int sendfile(FILE* filepointer, char *buffer) {
+//     fread(buffer, 1024, 1, filepointer);
+//     printf("%s\n", buffer);
+//     return 0;
+// }
 
 
 int main(int argc, char const *argv[])
@@ -129,10 +126,15 @@ int main(int argc, char const *argv[])
             else {
                 memset(buffer, 0, sizeof(buffer));
                 // while (valread = fread())
-                sendfile(filepointer, buffer);
+                // sendfile(filepointer, buffer);
+
+                fscanf(filepointer, "%s", buffer);
+
                 printf("GOT SOME %s\n", buffer);
                 sendto(server_fd, buffer, strlen(buffer), 0, (struct sockaddr*)&address,
                                                             sizeof(address));
+
+                fclose(filepointer);
             }
 
             
