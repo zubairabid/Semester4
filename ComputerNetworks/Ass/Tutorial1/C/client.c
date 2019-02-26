@@ -34,38 +34,20 @@ int main(int argc, char const *argv[])
     
     
     while (1) {
+        memset(input, 0, sizeof(input));
+        memset(buffer, 0, sizeof(buffer));
+
+
         scanf("%s", input);
-        printf("%s\n", input);
+        // printf("%s\n", input);
         sendto(sock, input, strlen(input), 0, (struct sockaddr*)&serv_addr,
                                                         sizeof(serv_addr));
 
-        memset(buffer, 0, sizeof(buffer));
         valread = recvfrom(sock, buffer, 1024, 0, (struct sockaddr *)&serv_addr, 
                                                         &addrlen);
 
         printf("Received from server - \n%s\n", buffer);
     }
-
-    // // Converts an IP address in numbers-and-dots notation into either a
-    // // struct in_addr or a struct in6_addr depending on whether you specify AF_INET or AF_INET6.
-    // if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0)
-    // {
-    //     printf("\nInvalid address/ Address not supported \n");
-    //     return -1;
-    // }
-
-    // if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)  // connect to the server address
-    // {
-    //     printf("\nConnection Failed \n");
-    //     return -1;
-    // }
-    // send(sock , hello , strlen(hello) , 0 );  // send the message.
-    // printf("~[client] : Connection message sent\n");
-    // valread = read( sock , buffer, 1024);  // receive message back from server, into the buffer
-    // printf("%s\n",buffer );
-
-    // send(sock, requestlist, strlen(requestlist), 0);
-
 
     return 0;
 }

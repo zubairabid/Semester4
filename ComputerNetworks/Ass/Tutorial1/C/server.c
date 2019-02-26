@@ -26,6 +26,17 @@ void listFiles(char **flist) {
     // return flist;
 }
 
+int compstr(char *one, char *two, int len) {
+    if (strlen(two) < len || strlen(one) < len)
+        return 0;
+
+    for (int i = 0; i < len; i++) {
+        if (one[i] != two[i])
+            return 0;
+    }
+    return 1;
+}
+
 
 int main(int argc, char const *argv[])
 {
@@ -40,6 +51,7 @@ int main(int argc, char const *argv[])
     char *lsfiles_ret = "~[server] : Files in directory";
     char *sendfile_msg = "~[server] : Received request to send file";
     char *sendfile_ret = "~[server] : Sending file";
+    char *inv = "~[server] : No valid command found";
 
 
     // Creating socket file descriptor
@@ -74,54 +86,31 @@ int main(int argc, char const *argv[])
     // printf("THIS IS NEW %s\n", filelist);
 
     while (1) {
-        printf("\n\nWaiting for client requests\n");
         memset(buffer, 0, sizeof(buffer));
+        
+        printf("\n\nWaiting for client requests\n");
+        
         valread = recvfrom(server_fd, buffer, 1024, 0, (struct sockaddr *)&address, 
                                                         &addrlen);
         printf("~[server] : Received from client - %s\n", buffer);
-        while (strcmp("listall", buffer) == 0) {
-
+        
+        if (compstr(buffer, "listall", strlen(buffer))) {
+            printf("listall command detected\n");
             sendto(server_fd, filelist, strlen(filelist), 0, (struct sockaddr*)&address,
                                                         sizeof(address));
-            break;
-        }                
+            // break;
+        }
+        else if (compstr(buffer, "send", 4)) {
+            printf("Detected send message\n");
+            sendto(server_fd, lsfiles_msg, strlen(lsfiles_msg), 0, (struct sockaddr*)&address,
+                                                            sizeof(address));
+        }
+        else { // Assume filename
+            sendto(server_fd, inv, strlen(inv), 0, (struct sockaddr*)&address,
+                                                            sizeof(address));
+        }
+
     }
-
-
-
-
-    // // Port bind is done. You want to wait for incoming connections and handle them in some way.
-    // // The process is two step: first you listen(), then you accept()
-    // if (listen(server_fd, 3) < 0) // 3 is the maximum size of queue - connections you haven't accepted
-    // {
-    //     perror("listen");
-    //     exit(EXIT_FAILURE);
-    // }
-
-    // // returns a brand new socket file descriptor to use for this single accepted connection. Once done, use send and recv
-    // if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
-    //                    (socklen_t*)&addrlen))<0)
-    // {
-    //     perror("accept");
-    //     exit(EXIT_FAILURE);
-    // }
-    // valread = read( new_socket , buffer, 1024);  // read infromation received into the buffer
-    // printf("%s\n",buffer );
-    // send(new_socket , hello , strlen(hello) , 0 );  // use sendto() and recvfrom() for DGRAM
-    // printf("~[server] : Connection message sent\n");
-    // memset(buffer, 0, sizeof(buffer));    
-
-    // while (1) {
-    //     valread = read( new_socket , buffer, 1024);  // read infromation received into the buffer
-    //     // printf("%s\n",buffer );
-
-    //     while (strcmp("listall",buffer) != 0) {
-    //         printf("equal");
-    //     }
-    
-    // }
-
-
 
     return 0;
 }
