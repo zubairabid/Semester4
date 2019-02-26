@@ -7,6 +7,19 @@
 #include <string.h>
 #define PORT 8080
 
+
+int compstr(char *one, char *two, int len) {
+    if (strlen(two) < len || strlen(one) < len)
+        return 0;
+
+    for (int i = 0; i < len; i++) {
+        if (one[i] != two[i])
+            return 0;
+    }
+    return 1;
+}
+
+
 int main(int argc, char const *argv[])
 {
     struct sockaddr_in address;
@@ -46,6 +59,18 @@ int main(int argc, char const *argv[])
         valread = recvfrom(sock, buffer, 1024, 0, (struct sockaddr *)&serv_addr, 
                                                         &addrlen);
 
+        if (!compstr(input, "listall", 7) && !compstr(input, "send", 4)) {
+            if (!compstr(buffer, "invalid", 7)) {
+                FILE *filepointer;
+                if (filepointer = fopen(input, "w")) {
+                    fwrite(buffer, 1024, 1, filepointer);
+                }
+                printf("Have to  write file here\n");
+            }
+            else {
+                printf("file no existo\n");
+            }
+        }
         printf("Received from server - \n%s\n", buffer);
     }
 

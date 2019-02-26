@@ -37,6 +37,15 @@ int compstr(char *one, char *two, int len) {
     return 1;
 }
 
+int sendfile(FILE* filepointer, char *buffer) {
+    for (int i = 0; i <  1024; i++) {
+        buffer[i] = fgetc(filepointer);
+        if (buffer[i] == EOF)
+            return 1;
+    }
+    return 0;
+}
+
 
 int main(int argc, char const *argv[])
 {
@@ -51,7 +60,9 @@ int main(int argc, char const *argv[])
     char *lsfiles_ret = "~[server] : Files in directory";
     char *sendfile_msg = "~[server] : Received request to send file";
     char *sendfile_ret = "~[server] : Sending file";
-    char *inv = "~[server] : No valid command found";
+    char *inv = "invalid";
+
+    FILE* filepointer;
 
 
     // Creating socket file descriptor
@@ -106,8 +117,25 @@ int main(int argc, char const *argv[])
                                                             sizeof(address));
         }
         else { // Assume filename
-            sendto(server_fd, inv, strlen(inv), 0, (struct sockaddr*)&address,
+            char *filname = "./server";
+            // strcat("server");
+            printf("trying to open file %s\n", filname);
+            if ((filepointer = fopen(filname, "r")) == NULL) {
+                perror("fopen");
+
+                sendto(server_fd, inv, strlen(inv), 0, (struct sockaddr*)&address,
                                                             sizeof(address));
+            }
+            else {
+                memset(buffer, 0, sizeof(buffer));
+                // while (valread = fread())
+                sendfile(filepointer, buffer);
+                printf("GOT SOME %s\n", buffer);
+                sendto(server_fd, buffer, strlen(buffer), 0, (struct sockaddr*)&address,
+                                                            sizeof(address));
+            }
+
+            
         }
 
     }
