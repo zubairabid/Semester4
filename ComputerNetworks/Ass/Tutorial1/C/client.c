@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
     struct sockaddr_in address;
     int sock = 0, valread;
     struct sockaddr_in serv_addr;
+    int addrlen = sizeof(serv_addr);
     char buffer[1024] = {0};
     if ((sock = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
     {
@@ -33,11 +34,16 @@ int main(int argc, char const *argv[])
     
     
     while (1) {
-        // memset(buffer, 0, sizeof(buffer));
         scanf("%s", input);
         printf("%s\n", input);
         sendto(sock, input, strlen(input), 0, (struct sockaddr*)&serv_addr,
                                                         sizeof(serv_addr));
+
+        memset(buffer, 0, sizeof(buffer));
+        valread = recvfrom(sock, buffer, 1024, 0, (struct sockaddr *)&serv_addr, 
+                                                        &addrlen);
+
+        printf("Received from server - \n%s\n", buffer);
     }
 
     // // Converts an IP address in numbers-and-dots notation into either a

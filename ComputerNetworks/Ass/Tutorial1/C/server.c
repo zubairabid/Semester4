@@ -8,17 +8,22 @@
 #define PORT 8080
 
 
-void listFiles() {
+void listFiles(char **flist) {
+    // char *flist;
     DIR *directory;
     struct dirent  *fname;
     if ((directory = opendir(".")) != NULL) {
         while ((fname = readdir(directory)) != NULL) {
             printf("%s\n", fname->d_name);
+            strcat(*flist, fname->d_name);
+            strcat(*flist, "\n");
         }
     }
     else {
         perror("dirent");
     }
+    // printf("%s", flist);
+    // return flist;
 }
 
 
@@ -64,14 +69,20 @@ int main(int argc, char const *argv[])
     }
 
 
+    char *filelist = malloc(sizeof(char)*1024);
+    listFiles(&filelist);
+    // printf("THIS IS NEW %s\n", filelist);
+
     while (1) {
-        printf("Waiting for client requests\n");
+        printf("\n\nWaiting for client requests\n");
         memset(buffer, 0, sizeof(buffer));
         valread = recvfrom(server_fd, buffer, 1024, 0, (struct sockaddr *)&address, 
                                                         &addrlen);
-        printf("%s\n", buffer);
-        while (strcmp("listall",buffer) != 0) {
-            listFiles();
+        printf("~[server] : Received from client - %s\n", buffer);
+        while (strcmp("listall", buffer) == 0) {
+
+            sendto(server_fd, filelist, strlen(filelist), 0, (struct sockaddr*)&address,
+                                                        sizeof(address));
             break;
         }                
     }
