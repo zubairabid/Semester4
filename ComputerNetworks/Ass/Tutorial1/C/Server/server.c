@@ -7,7 +7,7 @@
 #include <dirent.h>
 #define PORT 8080
 
-
+// Function to get list of files from directory
 void listFiles(char **flist) {
     // char *flist;
     DIR *directory;
@@ -22,10 +22,10 @@ void listFiles(char **flist) {
     else {
         perror("dirent");
     }
-    // printf("%s", flist);
-    // return flist;
 }
 
+
+// Function to compare two strings within length len
 int compstr(char *one, char *two, int len) {
     if (strlen(two) < len || strlen(one) < len)
         return 0;
@@ -37,11 +37,8 @@ int compstr(char *one, char *two, int len) {
     return 1;
 }
 
-// int sendfile(FILE* filepointer, char *buffer) {
-//     fread(buffer, 1024, 1, filepointer);
-//     printf("%s\n", buffer);
-//     return 0;
-// }
+
+
 
 
 int main(int argc, char const *argv[])
@@ -93,57 +90,60 @@ int main(int argc, char const *argv[])
     listFiles(&filelist);
     // printf("THIS IS NEW %s\n", filelist);
 
+
+    // Now we listen and send datagrams as needed, because UDP
     while (1) {
+        // Clearing the buffer before use
         memset(buffer, 0, sizeof(buffer));
         
         printf("\n\nWaiting for client requests\n");
         
-        valread = recvfrom(server_fd, buffer, 1024, 0, (struct sockaddr *)&address, 
-                                                        &addrlen);
+        // Reception from client
+        valread = recvfrom(server_fd, buffer, 1024, 0, (struct sockaddr *)&address, &addrlen);
         printf("~[server] : Received from client - %s\n", buffer);
         
+
+
+        // Checking received string among options
         if (compstr(buffer, "listall", strlen(buffer))) {
             printf("listall command detected\n");
-            sendto(server_fd, filelist, strlen(filelist), 0, (struct sockaddr*)&address,
-                                                        sizeof(address));
-            // break;
+            sendto(server_fd, filelist, strlen(filelist), 0, (struct sockaddr*)&address, sizeof(address));
         }
         else if (compstr(buffer, "send", 4)) {
             printf("Detected send message\n");
-            sendto(server_fd, lsfiles_msg, strlen(lsfiles_msg), 0, (struct sockaddr*)&address,
-                                                            sizeof(address));
+            sendto(server_fd, lsfiles_msg, strlen(lsfiles_msg), 0, (struct sockaddr*)&address, sizeof(address));
         }
         else { // Assume filename
-            char *filname = "./food.txt";
+
+            // Getting the filename turned out to be very hacky
+            char *filname = (char*)malloc(1024 * sizeof(char));
+            filname[0] = '.';
+            filname[1] = '/';
+            for (int i = 0; i < strlen(buffer); i++) {
+                filname[i+2] = buffer[i];
+            }
             // strcat("server");
+        
+    
             printf("trying to open file %s\n", filname);
             if ((filepointer = fopen(filname, "r")) == NULL) {
                 perror("fopen");
-
-                sendto(server_fd, inv, strlen(inv), 0, (struct sockaddr*)&address,
-                                                            sizeof(address));
+                sendto(server_fd, inv, strlen(inv), 0, (struct sockaddr*)&address, sizeof(address));
             }
             else {
                 memset(buffer, 0, sizeof(buffer));
-                // while (valread = fread())
-                // sendfile(filepointer, buffer);
-
-                // while (filepointer != NULL) {
-
-                // fscanf(filepointer, "%s", buffer);
-                // } 
-
+                
+                // Reading from file
                 char c;
                 int i = 0;
                 while (1) {
                     c = fgetc(filepointer);
-                    // strcat(buffer, c);
                     buffer[i++] = c;
                     if (c == EOF)
                         break;
                 }
 
-                printf("GOT SOME %s\n", buffer);
+                printf("Sending client data %s\n", buffer);
                 sendto(server_fd, buffer, strlen(buffer), 0, (struct sockaddr*)&address,
                                                             sizeof(address));
 
