@@ -4,7 +4,24 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include <string.h>
+#include <dirent.h>
 #define PORT 8080
+
+
+void listFiles() {
+    DIR *directory;
+    struct dirent  *fname;
+    if ((directory = opendir(".")) != NULL) {
+        while ((fname = readdir(directory)) != NULL) {
+            printf("%s\n", fname->d_name);
+        }
+    }
+    else {
+        perror("dirent");
+    }
+}
+
+
 int main(int argc, char const *argv[])
 {
     int server_fd, new_socket, valread;
@@ -12,10 +29,16 @@ int main(int argc, char const *argv[])
     int opt = 1;
     int addrlen = sizeof(address);
     char buffer[1024] = {0};
-    char *hello = "Hello from server";
+
+    char *hello = "~[server] : Connection established";
+    char *lsfiles_msg = "~[server] : Received request to view files";
+    char *lsfiles_ret = "~[server] : Files in directory";
+    char *sendfile_msg = "~[server] : Received request to send file";
+    char *sendfile_ret = "~[server] : Sending file";
+
 
     // Creating socket file descriptor
-    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)  // creates socket, SOCK_STREAM is for TCP. SOCK_DGRAM for UDP
+    if ((server_fd = socket(AF_INET, SOCK_DGRAM, 0)) == 0)  // creates socket, SOCK_STREAM is for TCP. SOCK_DGRAM for UDP
     {
         perror("socket failed");
         exit(EXIT_FAILURE);
@@ -40,24 +63,54 @@ int main(int argc, char const *argv[])
         exit(EXIT_FAILURE);
     }
 
-    // Port bind is done. You want to wait for incoming connections and handle them in some way.
-    // The process is two step: first you listen(), then you accept()
-    if (listen(server_fd, 3) < 0) // 3 is the maximum size of queue - connections you haven't accepted
-    {
-        perror("listen");
-        exit(EXIT_FAILURE);
+
+    while (1) {
+        printf("Waiting for client requests\n");
+        memset(buffer, 0, sizeof(buffer));
+        valread = recvfrom(server_fd, buffer, 1024, 0, (struct sockaddr *)&address, 
+                                                        &addrlen);
+        printf("%s\n", buffer);
+        while (strcmp("listall",buffer) != 0) {
+            listFiles();
+            break;
+        }                
     }
 
-    // returns a brand new socket file descriptor to use for this single accepted connection. Once done, use send and recv
-    if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
-                       (socklen_t*)&addrlen))<0)
-    {
-        perror("accept");
-        exit(EXIT_FAILURE);
-    }
-    valread = read( new_socket , buffer, 1024);  // read infromation received into the buffer
-    printf("%s\n",buffer );
-    send(new_socket , hello , strlen(hello) , 0 );  // use sendto() and recvfrom() for DGRAM
-    printf("Hello message sent\n");
+
+
+
+    // // Port bind is done. You want to wait for incoming connections and handle them in some way.
+    // // The process is two step: first you listen(), then you accept()
+    // if (listen(server_fd, 3) < 0) // 3 is the maximum size of queue - connections you haven't accepted
+    // {
+    //     perror("listen");
+    //     exit(EXIT_FAILURE);
+    // }
+
+    // // returns a brand new socket file descriptor to use for this single accepted connection. Once done, use send and recv
+    // if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
+    //                    (socklen_t*)&addrlen))<0)
+    // {
+    //     perror("accept");
+    //     exit(EXIT_FAILURE);
+    // }
+    // valread = read( new_socket , buffer, 1024);  // read infromation received into the buffer
+    // printf("%s\n",buffer );
+    // send(new_socket , hello , strlen(hello) , 0 );  // use sendto() and recvfrom() for DGRAM
+    // printf("~[server] : Connection message sent\n");
+    // memset(buffer, 0, sizeof(buffer));    
+
+    // while (1) {
+    //     valread = read( new_socket , buffer, 1024);  // read infromation received into the buffer
+    //     // printf("%s\n",buffer );
+
+    //     while (strcmp("listall",buffer) != 0) {
+    //         printf("equal");
+    //     }
+    
+    // }
+
+
+
     return 0;
 }

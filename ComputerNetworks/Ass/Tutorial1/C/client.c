@@ -12,9 +12,8 @@ int main(int argc, char const *argv[])
     struct sockaddr_in address;
     int sock = 0, valread;
     struct sockaddr_in serv_addr;
-    char *hello = "Hello from client";
     char buffer[1024] = {0};
-    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+    if ((sock = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
     {
         printf("\n Socket creation error \n");
         return -1;
@@ -24,24 +23,43 @@ int main(int argc, char const *argv[])
                                                 // which is meant to be, and rest is defined below
 
     serv_addr.sin_family = AF_INET;
+    serv_addr.sin_addr.s_addr = INADDR_ANY;  // Accept connections from any IP address - listens from all interfaces.
     serv_addr.sin_port = htons(PORT);
 
-    // Converts an IP address in numbers-and-dots notation into either a
-    // struct in_addr or a struct in6_addr depending on whether you specify AF_INET or AF_INET6.
-    if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0)
-    {
-        printf("\nInvalid address/ Address not supported \n");
-        return -1;
+
+    char *hello = "~[client] : Establishing connection";
+    char *requestlist = "listall";
+    char input[1024];    
+    
+    
+    while (1) {
+        // memset(buffer, 0, sizeof(buffer));
+        scanf("%s", input);
+        printf("%s\n", input);
+        sendto(sock, input, strlen(input), 0, (struct sockaddr*)&serv_addr,
+                                                        sizeof(serv_addr));
     }
 
-    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)  // connect to the server address
-    {
-        printf("\nConnection Failed \n");
-        return -1;
-    }
-    send(sock , hello , strlen(hello) , 0 );  // send the message.
-    printf("Hello message sent\n");
-    valread = read( sock , buffer, 1024);  // receive message back from server, into the buffer
-    printf("%s\n",buffer );
+    // // Converts an IP address in numbers-and-dots notation into either a
+    // // struct in_addr or a struct in6_addr depending on whether you specify AF_INET or AF_INET6.
+    // if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0)
+    // {
+    //     printf("\nInvalid address/ Address not supported \n");
+    //     return -1;
+    // }
+
+    // if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)  // connect to the server address
+    // {
+    //     printf("\nConnection Failed \n");
+    //     return -1;
+    // }
+    // send(sock , hello , strlen(hello) , 0 );  // send the message.
+    // printf("~[client] : Connection message sent\n");
+    // valread = read( sock , buffer, 1024);  // receive message back from server, into the buffer
+    // printf("%s\n",buffer );
+
+    // send(sock, requestlist, strlen(requestlist), 0);
+
+
     return 0;
 }
