@@ -1,0 +1,133 @@
+\documentclass[11pt,a4paper,twocolumn]{article}
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+%\setmainfont{???}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=1cm,right=1cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage[document]{ragged2e}
+
+\font\serif="FreeSerif:script=beng"
+\font\bg="FreeSerif:script=beng" at 13pt
+
+\usepackage{xcolor}
+\definecolor{hlit}{rgb}{0.5,0,1}
+\definecolor{diff}{rgb}{0.1,0.1,0.5}
+\definecolor{rlit}{rgb}{1,0,0}
+
+\title{Computational Linguistics - 2, Graded Exercise 2}
+\author{Zubair Abid, 20171076}
+\date{}
+
+\begin{document}
+	\twocolumn[
+	\begin{@twocolumnfalse}
+    	\maketitle
+    	The three tasks of the exercise:\\
+    	\begin{enumerate}
+    		\item Comparing Indian POS tagger output on
+    		previous assignment data to own output, and
+    		analyzing and commenting on the differences.
+    		
+    		\item Chunk given data with proper labels 
+    		(English)
+    		
+    		\item Chunk Indian language data with proper
+    		labels
+    	\end{enumerate}
+		$ $\\
+		$ $\\
+    	
+  	\end{@twocolumnfalse} 
+	]
+
+	\section{Part 1}
+	
+	\section{Part 2: Case frames for first language}
+	{\bg
+	\begin{enumerate}
+		
+		\item আমি কাল বিকেলে খেলছিলাম\\
+		\textcolor{hlit}{বিকেলে} -> \textcolor{rlit}{আমি} (Agent)\\
+		\textcolor{hlit}{বিকেলে} -> \textcolor{rlit}{কাল বিকেলে} (Time)\\
+				
+		
+		\item সূর্য পূর্ব দিক থেকে ওঠে \\
+		\textcolor{hlit}{ওঠে} -> \textcolor{rlit}{সূর্য} (Force)\\
+		\textcolor{hlit}{ওঠে} -> \textcolor{rlit}{পূর্ব দিক} (Source)\\
+				
+		\item দেবজিৎ আর শান্তনু লীগ খেলছিল \\
+		\textcolor{hlit}{খেলছিল} -> \textcolor{rlit}{লীগ} (Theme)\\
+		\textcolor{hlit}{খেলছিল} -> \textcolor{rlit}{দেবজিৎ আর শান্তনু} (Agent (combined))\\
+				
+		\item আমার এক্সাম কলকাতায় হবে \\
+		\textcolor{hlit}{হবে} -> \textcolor{rlit}{আমার এক্সাম} (Theme)\\
+		\textcolor{hlit}{হবে } -> \textcolor{rlit}{কলকাতায়} (Location)\\
+				
+		\item ডাক্তারটা পেশেন্টের ওপর অপারেশন করলো স্কাল্পেল্ দিয়ে \\
+		\textcolor{hlit}{অপারেশন করলো} -> \textcolor{rlit}{স্কাল্পেল্} (Instrument)\\
+		\textcolor{hlit}{অপারেশন করলো} -> \textcolor{rlit}{ডাক্তারটা} (Agent)\\
+		\textcolor{hlit}{অপারেশন করলো} -> \textcolor{rlit}{পেশেন্ট} (Patient)\\
+				
+	\end{enumerate}		
+	}	
+	
+	\section{Part 3}
+	{\bg
+	\begin{enumerate}
+	
+		\item CONSUME\\
+		\textcolor{hlit}{খাওয়া} (to eat), \textcolor{hlit}{পান করা} (to drink), 
+		\textcolor{hlit}{নিস্সাস নেওয়া} (to inhale), ()\\
+		
+		\item ATRANS\\
+		\textcolor{hlit}{কেনা} (to buy), \textcolor{hlit}{বিকরি করা} (to sell), 
+		\textcolor{hlit}{ধার দেওয়া} (to lend), \textcolor{hlit}{ধার নেওয়া} (to borrow)\\
+		
+		\item PTRANS\\
+		\textcolor{hlit}{হাঁটা} (to walk), \textcolor{hlit}{দৌড়ানো} (to run), 
+		\textcolor{hlit}{খুড়ানো} (to limp), \textcolor{hlit}{হামাগুড়ি দেওয়া} (to crawl)\\
+		
+		\item MTRANS\\
+		\textcolor{hlit}{বোঝানো} (to explain), \textcolor{hlit}{কথা বলা} (to talk), 
+		\textcolor{hlit}{পরামর্শ দেওয়া} (to advise), ()\\
+		
+		\item MBUILD\\
+		\textcolor{hlit}{ভাবা} (to think), \textcolor{hlit}{শপনো দেখা} (to dream), 
+		(), ()\\
+		
+		\item ATTEND\\
+		\textcolor{hlit}{শোনা} (to hear), \textcolor{hlit}{দেখা} (to see), 
+		\textcolor{hlit}{ছুঁয়া} (to touch), ()\\
+		
+		\item SPEAK\\
+		\textcolor{hlit}{বলা} (to speak), \textcolor{hlit}{শোনানো} (to make listen), 
+		(), ()\\
+		
+		\item PROPEL\\
+		\textcolor{hlit}{ধাক্কা দেওয়া} (to push), \textcolor{hlit}{টানা} (to pull), 
+		(), ()\\
+		
+		\item MOVE\\
+		\textcolor{hlit}{মারা} (to hit), \textcolor{hlit}{লাথি মারা} (to kick), 
+		\textcolor{hlit}{ঘুষি মারা} (to punch), \textcolor{hlit}{ওঠানো} (to lift)\\
+		
+		\item EXPEL\\
+		\textcolor{hlit}{প্রসাব করা} (to pee), \textcolor{hlit}{পায়খানা করা} (to shit), 
+		\textcolor{hlit}{}(), \textcolor{hlit}{}()\\
+		
+		\item GRASP\\
+		\textcolor{hlit}{ধরা} (to hold), \textcolor{hlit}{}(), 
+		\textcolor{hlit}{}(), \textcolor{hlit}{}()\\
+			
+	
+	\end{enumerate}
+	
+	}
+
+\end{document}
