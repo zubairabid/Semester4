@@ -1,0 +1,567 @@
+\documentclass[11pt,a4paper,twocolumn]{article}
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+%\setmainfont{???}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=1cm,right=1cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage[document]{ragged2e}
+
+\font\serif="FreeSerif:script=beng"
+\font\bg="FreeSerif:script=beng" at 13pt
+
+\usepackage{xcolor}
+\definecolor{hlit}{rgb}{0.5,0,1}
+\definecolor{diff}{rgb}{0.1,0.1,0.5}
+\definecolor{rlit}{rgb}{1,0,0}
+
+\title{Computational Linguistics - 2, Graded Exercise 2}
+\author{Zubair Abid, 20171076}
+%\date{}
+
+\begin{document}
+	\twocolumn[
+	\begin{@twocolumnfalse}
+    	\maketitle 
+    	The three tasks of the exercise:\\
+    	\begin{enumerate}
+    		\item Explore the following and submit entries 
+    		for 10 entities. Comment on your observations.\\
+			\begin{enumerate}
+				\item WordNet
+				\item VerbNet
+				\item FrameNet
+			\end{enumerate}
+
+    		
+    		\item Take 5 sentences in your first language that 
+    		are representative and draw case frames for them. 
+    		Expecting 5 different case frames.
+    		
+    		\item For each of the semantic primitives discussed 
+    		give the action verbs in your first language that 
+    		will be covered by them - at least 4 for each.
+    	
+    	\end{enumerate}
+		$ $\\
+		$ $\\
+    	
+  	\end{@twocolumnfalse} 
+	]
+
+	\section{Part 1}
+	
+	\subsection{WordNet}
+		\begin{enumerate}
+			\item table\\
+				\begin{enumerate}
+					\item altar (hyponym)
+					
+					\item counter (hyponym)
+					
+						\begin{enumerate}
+							\item bar (hyponym)
+							
+							\item countertop (meronym)							
+						\end{enumerate}
+											
+					\item furniture (hypernym)
+					
+					\item postpone (synonym)
+						\begin{enumerate}
+							\item hold (troponym)
+							
+							\item cancel (entailment)
+						\end{enumerate}
+						
+					\item mesa (synonym)
+						\begin{enumerate}
+							\item plateau (hypernym)
+						\end{enumerate}											
+				\end{enumerate}
+				
+						
+			\item chair
+				\begin{enumerate}
+					\item seat (hypernym)
+					
+					\item rocker (hyponym)
+					
+					\item armchair (hyponym)
+						\begin{enumerate}
+							\item fauteuil (hyponym)
+							
+							\item arm (meronym)
+							
+						\end{enumerate}
+					\item professorship (synonym)
+						\begin{enumerate}
+							\item position (hypernym)
+							
+						\end{enumerate}
+						
+					\item moderate (synonym)
+						\begin{enumerate}
+							\item lead (synonym)
+						\end{enumerate}
+					
+					\item orchestra (hypernym)
+				
+				\end{enumerate}
+			
+			\item floor 
+				\begin{enumerate}
+				
+					\item ground (hypernym)
+					
+					\item base (synonym)
+					
+					\item level (synonym)
+						\begin{enumerate}
+							\item building (holonym)
+						\end{enumerate}
+					
+					\item shock (synonym)
+					
+						\begin{enumerate}
+							
+							\item startle (troponym)
+							
+							\item surprise (hypernym)							
+								
+						\end{enumerate}											
+					
+					\item deck (synonym)		
+						\begin{enumerate}
+							\item beat (hypernym)
+						\end{enumerate}
+				\end{enumerate}		
+				
+			\item tear
+				\begin{enumerate}
+					\item rip (synonym)
+					
+					\item gap (hypernym)
+					
+					\item teardrop (synonym)
+						\begin{enumerate}
+							\item water (meronym)
+							
+							\item lacrimal secretion (holonym)
+							
+							\item drop (hypernym)
+						\end{enumerate}
+						
+					\item rupture (synonym)
+						\begin{enumerate}
+							\item lacerate (troponym)
+							
+							\item divide (hypernym)
+						\end{enumerate}
+						
+					\item charge (synonym)
+						\begin{enumerate}
+							\item rip (troponym)
+						\end{enumerate}
+						
+				\end{enumerate}
+			
+			\item break
+				\begin{enumerate}
+					\item fracture (synonym)
+					
+					\item fault (hyponym)
+							
+					\item fault line (meronym)
+					
+					\item crack (hypernym)
+					
+					\item interruption (synonym)
+						\begin{enumerate}
+							\item punctuation (hyponym)
+							
+							\item event (hypernym)
+							
+							\item gap (synonym)
+						\end{enumerate}
+						
+					\item terminate (synonym)
+						\begin{enumerate}
+							\item freeze (troponym)
+							
+							\item end (hypernym)
+						\end{enumerate}
+				\end{enumerate}
+			
+			\item dart
+				\begin{enumerate}
+					\item missile (hypernym)
+						\begin{enumerate}
+							\item ballistic missile (hyponym)
+							
+							\item projectile (hypernym)
+							
+							\item node (meronym)
+						\end{enumerate}
+						
+					\item benderilla (hyponym)
+					
+					\item flit (synonym)
+						\begin{enumerate}
+							\item flutter (synonym)
+							
+							\item butterfly (troponym)
+							
+							\item move (hypernym)
+							
+							\item dash (synonym)
+						\end{enumerate}
+				\end{enumerate}
+			
+			\item crop
+				\begin{enumerate}
+					\item harvest (synonym)
+					
+					\item fruitage (hyponym)
+					
+					\item yield (hypernym)
+					
+					\item cultivate (synonym)
+						\begin{enumerate}
+							\item overcrop (troponym)
+			
+							\item ready (hypernym)							
+							
+						\end{enumerate}		
+						
+					\item clip (synonym)
+						\begin{enumerate}
+							\item make sparse (hypernym)
+							
+							\item shear (troponym)
+							
+							\item disbud (troponym)
+						\end{enumerate}															
+					
+				\end{enumerate}
+			
+			\item blast
+				\begin{enumerate}
+					\item explosion (synonym)
+					
+					\item bomb explosion (hyponym)
+					
+					\item detonation (hypernym)
+					
+					\item great time (synonynm)
+						\begin{enumerate}
+							\item experience (hypernym)
+						\end{enumerate}
+						
+					\item attack (synonym)
+						\begin{enumerate}
+							\item flak (synonym)
+							
+							\item criticism (hypernym)
+						\end{enumerate}
+				\end{enumerate}
+			
+			\item light
+				\begin{enumerate}
+					\item beam (hyponym)
+						\begin{enumerate}
+							\item ray (hyponym)
+							
+							\item sunmbeam (hyponym)
+								
+						\end{enumerate}											
+					\item corona (hyponym)
+					
+					\item glow (hyponym)
+					
+					\item electromagnetic spectrum (holonym)
+					
+					\item radiation (hypernym)
+					
+					\item alight (synonym)
+						\begin{enumerate}
+							\item land (hypernym)
+							
+							\item perch (synonym)
+						\end{enumerate}					
+					
+				\end{enumerate}
+			
+			\item mind			
+				\begin{enumerate}
+					\item psyche (synonym)
+					
+					\item ego (hyponym)
+					
+					\item knowledge (hypernym)
+					
+					\item brain (synonym)
+					
+					\item recall (synonym)
+					
+					\item take offense (synonym)
+						\begin{enumerate}
+							\item bristle at (troponym)
+							
+							\item object (hypernym)
+						\end{enumerate}
+				\end{enumerate}						
+			
+		\end{enumerate}
+	\subsection{VerbNet}
+	
+		\begin{enumerate}
+			\item use
+				\begin{enumerate}
+					\item NP V NP ADV\\
+					<Agent> - [ ] - <Theme> - <Adverb>
+					
+					\item NP V NP PP.predicate\\
+					<Agent> - [ ] - <Theme> - [for] - <Predicate>
+					
+					\item NP V NP S\_ INF\\
+					<Agent> - [ ] - <Theme> - <Predicate>
+					
+				\end{enumerate}						
+		
+			\item conspire
+				\begin{enumerate}
+					\item NP V\\
+					<Agent> - [ ]\\
+					
+					\item NP V PP.co-agent\\
+					<Agent> - [ ] - [with] - <Co-agent>
+					
+					\item NP V PP.beneficiary\\
+					<Agent> - [ ] - [against] - <Beneficiary>
+					
+					\item NP V S\_ INF\\
+					<Agent> - [ ] - <Theme>
+				\end{enumerate}
+				
+			\item poison
+				\begin{enumerate}
+					\item NP V NP\\
+					<Agent> - [ ] - <Patient>
+					
+					\item NP V NP ADJ\\
+					<Agent> - [ ] - <Patient> - <Result>
+					
+					\item NP V NP PP.result\\
+					<Agent> - [ ] - <Patient> - [to/into] - <Result>
+					
+					\item NP V NP PP.instrument\\
+					<Agent> - [ ] - <Patient> - [with] - <Instrument>
+					
+				\end{enumerate}
+				
+			\item waltz
+				\begin{enumerate}
+					\item NP.theme V\\
+					<Theme> - [ ]
+					
+					\item NP V PP.location\\
+					<Theme> - [ ] - <Prep> - <Location>
+					
+					\item NP V NP PP.location\\
+					<Agent> - [ ] - <Theme> - <Prep> - <Location>
+					
+					\item NP V NP ADJP\\
+					<Agent> - [ ] - <Theme> - <Result>
+					
+					\item NP V NP PP.result
+					<Agent> - [ ] - <Theme> - [to/into] - <Result>
+				
+				\end{enumerate}
+
+			\item snooze
+				\begin{enumerate}
+					\item NP V\\
+					<Agent> - [ ]
+					
+					\item NP V NP\\
+					<Agent> - [ ] - <Theme>
+					 
+				\end{enumerate}		
+				
+			\item split
+				\begin{enumerate}
+					\item NP V NP PP.co-patient
+					<Agent> - [ ] - <Patient> - [off/off/of/from] - <Co-Patient>
+					
+					\item NP V NP apart
+					<Agent> - [ ] - <Patient> - apart
+					
+					\item NP V PP.co-patient
+					<Patient> - [ ] - [off/off/of/from] - <Co-Patient>
+					
+					\item NP V apart
+					<Patient> - [ ] - apart
+					
+				\end{enumerate}								
+				
+			\item knead
+				\begin{enumerate}
+					\item NP.material V PP.product\\
+					<Material> - [ ] - [into] - <product>
+					
+					\item NP V NP.material PP.product\\
+					<Agent> - [ ] - <Material> - [into]> - <product>
+					
+					
+					\item NP V NP.material\\
+					<Agent> - [ ] - <Material>
+					
+				\end{enumerate}			
+				
+			\item price
+				\begin{enumerate}
+					\item N V NP\\
+					<Agent> - [ ] - <Theme>
+					
+					\item NP V NP PP.value\\
+					<Agent> - [ ] - <Theme> - [at] - <Value>
+						
+				\end{enumerate}		
+				
+			\item calve
+				\begin{enumerate}
+					\item NP V\\
+					<Agent> - [ ]
+				\end{enumerate}								
+				
+			\item orphan
+				\begin{enumerate}
+					\item NP V NP\\
+					<Agent> - [ ] - <Theme>
+						
+				\end{enumerate}									
+			
+		\end{enumerate}
+	
+	\subsection{FrameNet}
+		\begin{enumerate}
+			\item <Agent> - [ ] - <Theme>\\
+			drowse, sleep, slumber, conspire, discriminate, price, appraise, meter
+		
+			\item <Agent> - [ ] - <Patient> - <Result>\\
+			poison, electrocute, evicerate, impale, knife, garrot, throttle	
+			
+			\item <Theme> - [ ]\\
+			clog, cancan, boogie, bop, conga, quickstep
+			
+			\item <Agent> - [ ] - <Theme> - <Predicate>\\
+			use, apply, employ, exert, exploit, utilize	
+			
+			\item <Agent> - [ ] - <Theme> - <Result>\\
+			waltz, dance, pirrouette, shuffle, rumba
+			
+			\item <Patient> - [ ] - apart\\
+			saw, rip, roll, snap, tug	
+			
+			\item <Agent> - [ ] - [against] - <Beneficiary>\\
+			collude, ally, scheme, protest, rebel
+			
+			\item <Agent> - [ ] - <Patient> - apart\\
+			blow, hack, hew, kick, knock, sliver, slip, shove, yank
+			
+			\item <Experiencer> - [ ] - [on] - <Theme>\\
+			focus, centre, converge, brood, marinate, fixate
+			
+			\item <Agent> - [ ] - <Theme> - <Prep> - <Location>\\
+			polka, jig, boogie, foxtrot, samba, tango
+			
+		\end{enumerate}
+	
+	
+	\section{Part 2}
+	{\bg
+	\begin{enumerate}
+		
+		\item আমি কাল বিকেলে খেলছিলাম\\
+		\textcolor{hlit}{বিকেলে} -> \textcolor{rlit}{আমি} (Agent)\\
+		\textcolor{hlit}{বিকেলে} -> \textcolor{rlit}{কাল বিকেলে} (Time)\\
+				
+		
+		\item সূর্য পূর্ব দিক থেকে ওঠে \\
+		\textcolor{hlit}{ওঠে} -> \textcolor{rlit}{সূর্য} (Force)\\
+		\textcolor{hlit}{ওঠে} -> \textcolor{rlit}{পূর্ব দিক} (Source)\\
+				
+		\item দেবজিৎ আর শান্তনু লীগ খেলছিল \\
+		\textcolor{hlit}{খেলছিল} -> \textcolor{rlit}{লীগ} (Theme)\\
+		\textcolor{hlit}{খেলছিল} -> \textcolor{rlit}{দেবজিৎ আর শান্তনু} (Agent (combined))\\
+				
+		\item আমার এক্সাম কলকাতায় হবে \\
+		\textcolor{hlit}{হবে} -> \textcolor{rlit}{আমার এক্সাম} (Theme)\\
+		\textcolor{hlit}{হবে } -> \textcolor{rlit}{কলকাতায়} (Location)\\
+				
+		\item ডাক্তারটা পেশেন্টের ওপর অপারেশন করলো স্কাল্পেল্ দিয়ে \\
+		\textcolor{hlit}{অপারেশন করলো} -> \textcolor{rlit}{স্কাল্পেল্} (Instrument)\\
+		\textcolor{hlit}{অপারেশন করলো} -> \textcolor{rlit}{ডাক্তারটা} (Agent)\\
+		\textcolor{hlit}{অপারেশন করলো} -> \textcolor{rlit}{পেশেন্ট} (Patient)\\
+				
+	\end{enumerate}		
+	}	
+	
+	\section{Part 3}
+	{\bg
+	\begin{enumerate}
+	
+		\item CONSUME\\
+		\textcolor{hlit}{খাওয়া} (to eat), \textcolor{hlit}{পান করা} (to drink), 
+		\textcolor{hlit}{নিস্সাস নেওয়া} (to inhale), \textcolor{hlit}{গিলে ফেলা} (to swallow)\\
+		
+		\item ATRANS\\
+		\textcolor{hlit}{কেনা} (to buy), \textcolor{hlit}{বিকরি করা} (to sell), 
+		\textcolor{hlit}{ধার দেওয়া} (to lend), \textcolor{hlit}{ধার নেওয়া} (to borrow)\\
+		
+		\item PTRANS\\
+		\textcolor{hlit}{হাঁটা} (to walk), \textcolor{hlit}{দৌড়ানো} (to run), 
+		\textcolor{hlit}{খুড়ানো} (to limp), \textcolor{hlit}{হামাগুড়ি দেওয়া} (to crawl)\\
+		
+		\item MTRANS\\
+		\textcolor{hlit}{বোঝানো} (to explain), \textcolor{hlit}{কথা বলা} (to talk), 
+		\textcolor{hlit}{পরামর্শ দেওয়া} (to advise), \textcolor{hlit}{জিজ্ঞাসা করা} (to ask)\\
+		
+		\item MBUILD\\
+		\textcolor{hlit}{ভাবা} (to think), \textcolor{hlit}{শপনো দেখা} (to dream)\\
+		
+		\item ATTEND\\
+		\textcolor{hlit}{শোনা} (to hear), \textcolor{hlit}{দেখা} (to see), 
+		\textcolor{hlit}{ছুঁয়া} (to touch), \textcolor{hlit}{গন্ধ পাওয়া} (to smell)\\
+		
+		\item SPEAK\\
+		\textcolor{hlit}{বলা} (to speak), \textcolor{hlit}{শোনানো} (to make listen), 
+		\textcolor{hlit}{চিৎকার করা} (to shout), \textcolor{hlit}{শুরশুরি কথা বলা} (to whisper)\\
+		
+		\item PROPEL\\
+		\textcolor{hlit}{ঠেলা} (to push), \textcolor{hlit}{টানা} (to pull), 
+		\textcolor{hlit}{সরানো} (to move), \textcolor{hlit}{নামানো} (to lower)\\
+		
+		\item MOVE\\
+		\textcolor{hlit}{মারা} (to hit), \textcolor{hlit}{লাথি মারা} (to kick), 
+		\textcolor{hlit}{ঘুষি মারা} (to punch), \textcolor{hlit}{ওঠানো} (to lift)\\
+		
+		\item EXPEL\\
+		\textcolor{hlit}{প্রসাব করা} (to pee), \textcolor{hlit}{পায়খানা করা} (to shit), 
+		\textcolor{hlit}{বমি করা} (to vomit), \textcolor{hlit}{ঘাম} (to sweat)\\
+		
+		\item GRASP\\
+		\textcolor{hlit}{ধরা} (to hold)\\
+			
+	
+	\end{enumerate}
+	
+	}
+
+\end{document}

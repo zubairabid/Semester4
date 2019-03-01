@@ -22,7 +22,7 @@
 
 \title{Computational Linguistics - 2, Graded Exercise 2}
 \author{Zubair Abid, 20171076}
-\date{}
+%\date{}
 
 \begin{document}
 	\twocolumn[
@@ -275,7 +275,10 @@
 				\begin{enumerate}
 					\item beam (hyponym)
 						\begin{enumerate}
-							\item 	
+							\item ray (hyponym)
+							
+							\item sunmbeam (hyponym)
+								
 						\end{enumerate}											
 					\item corona (hyponym)
 					
@@ -285,16 +288,134 @@
 					
 					\item radiation (hypernym)
 					
-					
+					\item alight (synonym)
+						\begin{enumerate}
+							\item land (hypernym)
+							
+							\item perch (synonym)
+						\end{enumerate}					
 					
 				\end{enumerate}
 			
-			\item mind					
+			\item mind			
+				\begin{enumerate}
+					\item psyche (synonym)
+					
+					\item ego (hyponym)
+					
+					\item knowledge (hypernym)
+					
+					\item brain (synonym)
+					
+					\item recall (synonym)
+					
+					\item take offense (synonym)
+						\begin{enumerate}
+							\item bristle at (troponym)
+							
+							\item object (hypernym)
+						\end{enumerate}
+				\end{enumerate}						
 			
 		\end{enumerate}
 	\subsection{VerbNet}
 	
+		\begin{enumerate}
+			\item conspire
+				\begin{enumerate}
+					\item NP V\\
+					<Agent> - [ ]\\
+					
+					\item NP V PP.co-agent\\
+					<Agent> - [ ] - [with] - <Co-agent>
+					
+					\item NP V PP.beneficiary\\
+					<Agent> - [ ] - [against] - <Beneficiary>
+					
+					\item NP V S\_ INF\\
+					<Agent> - [ ] - <Theme>
+				\end{enumerate}
+				
+			\item poison
+				\begin{enumerate}
+					\item NP V NP\\
+					<Agent> - [ ] - <Patient>
+					
+					\item NP V NP ADJ\\
+					<Agent> - [ ] - <Patient> - <Result>
+					
+					\item NP V NP PP.result\\
+					<Agent> - [ ] - <Patient> - [to/into] - <Result>
+					
+					\item NP V NP PP.instrument\\
+					<Agent> - [ ] - <Patient> - [with] - <Instrument>
+					
+				\end{enumerate}
+				
+			\item waltz
+				\begin{enumerate}
+					\item NP.theme V\\
+					<Theme> - [ ]
+					
+					\item NP V PP.location\\
+					<Theme> - [ ] - <Prep> - <Location>
+					
+					\item NP V NP PP.location\\
+					<Agent> - [ ] - <Theme> - <Prep> - <Location>
+					
+					\item NP V NP ADJP\\
+					<Agent> - [ ] - <Theme> - <Result>
+					
+					\item NP V NP PP.result
+					<Agent> - [ ] - <Theme> - [to/into] - <Result>
+					
+					\item 
+				\end{enumerate}
+
+			\item snooze
+				\begin{enumerate}
+					\item NP V\\
+					<Agent> - [ ]
+					
+					\item NP V NP\\
+					<Agent> - [ ] - <Theme>
+					 
+				\end{enumerate}		
+				
+			\item knead
+				\begin{enumerate}
+					\item NP.material V PP.product\\
+					<Material> - [ ] - [into] - <product>
+					
+					\item NP V NP.material PP.product\\
+					<Agent> - [ ] - <Material> - [into]> - <product>
+					
+					
+					\item NP V NP.material\\
+					<Agent> - [ ] - <Material>
+					
+				\end{enumerate}										
+			
+		\end{enumerate}
+	
 	\subsection{FrameNet}
+		\begin{enumerate}
+			\item <Agent> - [ ] - <Theme>\\
+			drowse, sleep, slumber, conspire, discriminate
+		
+			\item <Agent> - [ ] - <Patient> - <Result>\\
+			poison, electrocute, evicerate, impale, knife, garrot, throttle		
+			
+			\item <Agent> - [ ] - <Theme> - <Result>\\
+			waltz, dance, pirrouette, shuffle, rumba	
+			
+			\item <Agent> - [ ] - [against] - <Beneficiary>\\
+			collude, ally, scheme, protest, rebel
+			
+			\item <Agent> - [ ] - <Theme> - <Prep> - <Location>\\
+			polka, jig, boogie, foxtrot, samba, tango
+			
+		\end{enumerate}
 	
 	
 	\section{Part 2}
@@ -344,7 +465,7 @@
 		
 		\item MTRANS\\
 		\textcolor{hlit}{বোঝানো} (to explain), \textcolor{hlit}{কথা বলা} (to talk), 
-		\textcolor{hlit}{পরামর্শ দেওয়া} (to advise), ()\\
+		\textcolor{hlit}{পরামর্শ দেওয়া} (to advise), \textcolot{hlit}{} (to ask)\\
 		
 		\item MBUILD\\
 		\textcolor{hlit}{ভাবা} (to think), \textcolor{hlit}{শপনো দেখা} (to dream), 
